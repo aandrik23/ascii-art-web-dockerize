@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Generator</title>
+    <link href="/css/body.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <script src="/JavaScript/enter.js" defer></script>
+</head>
+
+<body align="center">
+    <main>
+        <h1>ASCII Art Generator</h1>
+        <form action="/" method="POST">
+            <div>
+                <textarea 
+                    class="input" 
+                    id="text" 
+                    name="text" 
+                    rows="5" 
+                    cols="30" 
+                    placeholder="Your text here" 
+                    required
+                ></textarea><br><br>
+            </div>
+
+            <div class="banner-selection">
+                <label for="banner">Choose Your Banner Style:</label>
+                <div class="banner-options">
+                    <!-- Standard Option -->
+                    <input 
+                        id="standard" 
+                        type="radio" 
+                        name="banner" 
+                        value="standard" 
+                        class="banner-radio" 
+                        checked
+                    />
+                    <label for="standard" class="banner-card">
+                        <div class="banner-title">Standard</div>
+                        <div class="banner-description">Classic ASCII art style.</div>
+                    </label>
+            
+                    <!-- Shadow Option -->
+                    <input 
+                        id="shadow" 
+                        type="radio" 
+                        name="banner" 
+                        value="shadow" 
+                        class="banner-radio"
+                    />
+                    <label for="shadow" class="banner-card">
+                        <div class="banner-title">Shadow</div>
+                        <div class="banner-description">Stylish shadow effects.</div>
+                    </label>
+            
+                    <!-- Thinkertoy Option -->
+                    <input 
+                        id="thinkertoy" 
+                        type="radio" 
+                        name="banner" 
+                        value="thinkertoy" 
+                        class="banner-radio"
+                    />
+                    <label for="thinkertoy" class="banner-card">
+                        <div class="banner-title">Thinkertoy</div>
+                        <div class="banner-description">Fun and quirky design.</div>
+                    </label>
+                </div>
+            </div>
+            
+            <button>Create</button>
+        </form>
+
+        {{if .HasError}}
+        <div style="color: red; margin-top: 20px;">
+            <strong>Error:</strong> {{.Error}}
+        </div>
+        {{end}}
+
+        {{if .AsciiArt}}
+        <hr>
+        <h2>Generated ASCII Art:</h2>
+        <pre class="ascii-art">{{.AsciiArt}}</pre>
+        {{end}}
+    </main>
+    <div id="info-bubble" class="info-bubble">
+        Did you know that \n represents the enter button in programming?
+    </div>
+   
+
+
+    
+    
+</body>
+</html>
